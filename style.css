@@ -161,6 +161,44 @@ section {
   margin-bottom: 3rem;
 }
 
+/* Carousel container */
+.carousel {
+  overflow: hidden;
+  position: relative;
+  cursor: grab;
+  padding: 30px;
+}
+
+.about-cards {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.about-card {
+  flex: 0 0 auto;
+  width: 300px; /* Adjust card width */
+  height: 300px; /* Adjust card height */
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  justify-content: space-evenly;
+}
+
+.about-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.about-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgb(255, 255, 255);
+}
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
   body {

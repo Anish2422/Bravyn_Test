@@ -76,3 +76,35 @@ form.addEventListener('submit', async (e) => {
     submitButton.innerHTML = originalText;
   }
 });
+
+const carousel = document.querySelector('.carousel');
+const cards = document.querySelector('.about-cards');
+
+let isDragging = false;
+let startX;
+let scrollLeft;
+
+carousel.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  carousel.classList.add('dragging');
+  startX = e.pageX - carousel.offsetLeft;
+  scrollLeft = carousel.scrollLeft;
+});
+
+carousel.addEventListener('mouseleave', () => {
+  isDragging = false;
+  carousel.classList.remove('dragging');
+});
+
+carousel.addEventListener('mouseup', () => {
+  isDragging = false;
+  carousel.classList.remove('dragging');
+});
+
+carousel.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const x = e.pageX - carousel.offsetLeft;
+  const walk = (x - startX) * 2; // Adjust scroll speed
+  carousel.scrollLeft = scrollLeft - walk;
+});
