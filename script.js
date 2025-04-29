@@ -77,6 +77,15 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
+//NavBar Hamburger
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+//About Us Carousel
 const carousel = document.querySelector('.carousel');
 const cards = document.querySelector('.about-cards');
 
@@ -84,6 +93,7 @@ let isDragging = false;
 let startX;
 let scrollLeft;
 
+// Mouse events
 carousel.addEventListener('mousedown', (e) => {
   isDragging = true;
   carousel.classList.add('dragging');
@@ -107,4 +117,24 @@ carousel.addEventListener('mousemove', (e) => {
   const x = e.pageX - carousel.offsetLeft;
   const walk = (x - startX) * 2; // Adjust scroll speed
   carousel.scrollLeft = scrollLeft - walk;
+});
+
+// Touch events
+carousel.addEventListener('touchstart', (e) => {
+  isDragging = true;
+  carousel.classList.add('dragging');
+  startX = e.touches[0].pageX - carousel.offsetLeft;
+  scrollLeft = carousel.scrollLeft;
+});
+
+carousel.addEventListener('touchmove', (e) => {
+  if (!isDragging) return;
+  const x = e.touches[0].pageX - carousel.offsetLeft;
+  const walk = (x - startX) * 2; // Adjust scroll speed
+  carousel.scrollLeft = scrollLeft - walk;
+});
+
+carousel.addEventListener('touchend', () => {
+  isDragging = false;
+  carousel.classList.remove('dragging');
 });

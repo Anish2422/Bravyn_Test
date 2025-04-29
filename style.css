@@ -199,7 +199,51 @@ section {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgb(255, 255, 255);
 }
-/* Responsive adjustments */
+
+/* Navbar responsiveness fix */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  flex-shrink: 0;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Hide nav links by default */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+/* Responsive adjustments
 @media screen and (max-width: 768px) {
   body {
     font-size: 16px;
@@ -227,27 +271,6 @@ section {
 }
 
 
-/* Navbar responsiveness fix */
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-nav ul li {
-  flex-shrink: 0;
-}
-
 @media screen and (max-width: 768px) {
   nav {
     flex-direction: column;
@@ -262,5 +285,152 @@ nav ul li {
   nav ul li {
     width: 100%;
     padding: 0.5rem 0;
+  }
+} */
+
+/* General adjustments for smaller screens */
+@media screen and (max-width: 1080px) {
+  nav {
+    position: relative;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000;
+  }
+
+  .nav-links a {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+    padding: 0;
+  }
+
+  header {
+    flex-direction: column;
+    padding: 10px 20px;
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    height: auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  #heroImage {
+    height: 50vh;
+    object-fit: cover;
+  }
+
+  section {
+    padding: 50px 20px;
+  }
+
+  .carousel {
+    padding: 20px;
+  }
+
+  .about-cards {
+    gap: 10px;
+  }
+
+  .about-card {
+    width: 90%; /* Adjust card width for smaller screens */
+    margin: 0 auto;
+  }
+
+  .services, .work {
+    grid-template-columns: 1fr; /* Stack cards vertically */
+    gap: 20px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  form {
+    gap: 15px;
+  }
+
+  form input, form textarea {
+    padding: 10px;
+  }
+
+  form button {
+    padding: 10px;
+  }
+
+  footer {
+    font-size: 12px;
+    padding: 20px;
+  }
+}
+
+/* Extra small screens (max-width: 480px) */
+@media screen and (max-width: 480px) {
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  nav a {
+    font-size: 0.8rem;
+  }
+
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-card {
+    width: 100%; /* Full width for very small screens */
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  footer {
+    font-size: 10px;
   }
 }
